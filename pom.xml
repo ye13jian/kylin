@@ -114,6 +114,8 @@
         <!-- Calcite Version -->
         <calcite.version>1.11.0</calcite.version>
         <avatica.version>1.9.0</avatica.version>
+        <!-- Since both Hive and Calcite has dependency with Avatica, but with different versions and different protocol dependencies, has to hard code the version and put the right place -->
+        <avatica.protobuf.version>3.1.0</avatica.protobuf.version>
 
         <!-- Sonar -->
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
