@@ -112,8 +112,8 @@
         <aspectj.version>1.8.9</aspectj.version>
 
         <!-- Calcite Version -->
-        <calcite.version>1.10.0</calcite.version>
-        <avatica.version>1.8.0</avatica.version>
+        <calcite.version>1.11.0</calcite.version>
+        <avatica.version>1.9.0</avatica.version>
 
         <!-- Sonar -->
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
