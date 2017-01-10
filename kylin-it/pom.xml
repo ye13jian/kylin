@@ -55,12 +55,16 @@
             <groupId>org.apache.kylin</groupId>
             <artifactId>kylin-source-hive</artifactId>
         </dependency>
-        <!--
         <dependency>
             <groupId>org.apache.kylin</groupId>
             <artifactId>kylin-jdbc</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.protobuf</groupId>
+                    <artifactId>protobuf-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        -->
         <dependency>
             <groupId>org.apache.kylin</groupId>
             <artifactId>kylin-tool</artifactId>
@@ -244,10 +248,14 @@
 
     <profiles>
         <profile>
-            <id>sandbox</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <id>sandbox-query</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.google.protobuf</groupId>
+                    <artifactId>protobuf-java</artifactId>
+                    <version>${avatica.protobuf.version}</version>
+                </dependency>
+            </dependencies>
             <build>
                 <plugins>
                     <plugin>
@@ -284,6 +292,16 @@
                             <argLine>-Xms1G -Xmx2G -XX:PermSize=128M -XX:MaxPermSize=512M</argLine>
                         </configuration>
                     </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>sandbox</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
