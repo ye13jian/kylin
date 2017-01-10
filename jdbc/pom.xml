@@ -44,12 +44,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.calcite.avatica</groupId>
-            <artifactId>avatica</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
-            <version>${avatica.protobuf.version}</version>
+            <artifactId>avatica-core</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -72,13 +67,6 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <artifactSet>
-                                <!-- jackson is already packaged into calcite-avatica.jar. To avoid including jackson
-                                twice, we include calcite-avatica which has jackson and exclude jackson. -->
-                                <excludes>
-                                    <exclude>com.fasterxml.jackson.core:*</exclude>
-                                </excludes>
-                            </artifactSet>
                             <relocations>
                                 <relocation>
                                     <pattern>org.apache.calcite</pattern>

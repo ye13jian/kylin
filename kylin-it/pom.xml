@@ -57,16 +57,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.kylin</groupId>
-            <artifactId>kylin-jdbc</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.protobuf</groupId>
-                    <artifactId>protobuf-java</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kylin</groupId>
             <artifactId>kylin-tool</artifactId>
         </dependency>
         <dependency>
@@ -251,9 +241,8 @@
             <id>sandbox-query</id>
             <dependencies>
                 <dependency>
-                    <groupId>com.google.protobuf</groupId>
-                    <artifactId>protobuf-java</artifactId>
-                    <version>${avatica.protobuf.version}</version>
+                    <groupId>org.apache.kylin</groupId>
+                    <artifactId>kylin-jdbc</artifactId>
                 </dependency>
             </dependencies>
             <build>
@@ -288,6 +277,10 @@
                                     <name>log4j.configuration</name>
                                     <value>file:${project.basedir}/..//build/conf/kylin-tools-log4j.properties</value>
                                 </property>
+                                <property>
+                                    <name>kylin.server.cluster-servers</name>
+                                    <value>localhost:7070</value>
+                                </property>
                             </systemProperties>
                             <argLine>-Xms1G -Xmx2G -XX:PermSize=128M -XX:MaxPermSize=512M</argLine>
                         </configuration>
@@ -296,7 +289,7 @@
             </build>
         </profile>
         <profile>
-            <id>sandbox</id>
+            <id>sandbox-build</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
